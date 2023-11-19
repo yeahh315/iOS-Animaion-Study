@@ -17,6 +17,7 @@
 		6B4D96832B00B19700977A82 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D96822B00B19700977A82 /* UIButton+.swift */; };
 		6B4D96862B00B22F00977A82 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6B4D96852B00B22F00977A82 /* SnapKit */; };
 		6B4D96A22B04897300977A82 /* Week2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D96A12B04897300977A82 /* Week2ViewController.swift */; };
+		6B4D96CD2B074AF000977A82 /* Week2FightingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D96CC2B074AF000977A82 /* Week2FightingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		6B4D967D2B00B06600977A82 /* Week1FightingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1FightingViewController.swift; sourceTree = "<group>"; };
 		6B4D96822B00B19700977A82 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		6B4D96A12B04897300977A82 /* Week2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week2ViewController.swift; sourceTree = "<group>"; };
+		6B4D96CC2B074AF000977A82 /* Week2FightingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week2FightingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,9 +115,26 @@
 		6B4D96A02B04896100977A82 /* Week2 */ = {
 			isa = PBXGroup;
 			children = (
-				6B4D96A12B04897300977A82 /* Week2ViewController.swift */,
+				6B4D96CA2B074AC100977A82 /* Practice */,
+				6B4D96CB2B074ACF00977A82 /* Fighting */,
 			);
 			path = Week2;
+			sourceTree = "<group>";
+		};
+		6B4D96CA2B074AC100977A82 /* Practice */ = {
+			isa = PBXGroup;
+			children = (
+				6B4D96A12B04897300977A82 /* Week2ViewController.swift */,
+			);
+			path = Practice;
+			sourceTree = "<group>";
+		};
+		6B4D96CB2B074ACF00977A82 /* Fighting */ = {
+			isa = PBXGroup;
+			children = (
+				6B4D96CC2B074AF000977A82 /* Week2FightingViewController.swift */,
+			);
+			path = Fighting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +216,7 @@
 				6B4D966A2B00AD4400977A82 /* ViewController.swift in Sources */,
 				6B4D96832B00B19700977A82 /* UIButton+.swift in Sources */,
 				6B4D967C2B00AFB600977A82 /* Week1PracticeViewController.swift in Sources */,
+				6B4D96CD2B074AF000977A82 /* Week2FightingViewController.swift in Sources */,
 				6B4D967E2B00B06600977A82 /* Week1FightingViewController.swift in Sources */,
 				6B4D96662B00AD4400977A82 /* AppDelegate.swift in Sources */,
 				6B4D96682B00AD4400977A82 /* SceneDelegate.swift in Sources */,
