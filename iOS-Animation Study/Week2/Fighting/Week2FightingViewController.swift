@@ -16,10 +16,10 @@ class Week2FightingViewController: UIViewController {
     private lazy var mangom = UIImageView(image: UIImage(named: "mangom"))
     private let poopList: [UILabel] = {
         var labelList = [UILabel]()
-        for i in 0...10 {
+        for i in 0...20 {
             let label = UILabel()
             label.text = "💩"
-            label.font = .systemFont(ofSize: 40)
+            label.font = .systemFont(ofSize: 25)
             labelList.append(label)
         }
         return labelList
@@ -66,7 +66,7 @@ class Week2FightingViewController: UIViewController {
     //시간 측정
     private func startTimer() {
         guard timer == nil else { return }
-        self.timer = Timer.scheduledTimer(timeInterval: 0.5,
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1,
                                           target: self,
                                           selector: #selector(self.movePoop),
                                           userInfo: nil,
@@ -88,8 +88,8 @@ class Week2FightingViewController: UIViewController {
         
         mangom.snp.makeConstraints {
             $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(150)
-            $0.width.equalTo(150)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(100)
+            $0.width.equalTo(100)
         }
         
         poopList.forEach {
@@ -110,7 +110,7 @@ class Week2FightingViewController: UIViewController {
     @objc
     private func movePoop() {
         poopList.forEach {
-            var newFrameX = $0.frame.origin.x + CGFloat(Int.random(in: -50...50))
+            var newFrameX = $0.frame.origin.x + CGFloat(Int.random(in: -10...10))
             var newFrameY = $0.frame.origin.y + CGFloat(Int.random(in: -20...20))
             newFrameX = calNewPosition(position: newFrameX, forFrame: view.safeAreaLayoutGuide.layoutFrame.width - $0.frame.size.width)
             newFrameY = calNewPosition(position: newFrameY, forFrame: view.safeAreaLayoutGuide.layoutFrame.height - $0.frame.size.height)
