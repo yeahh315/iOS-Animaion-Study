@@ -19,6 +19,8 @@
 		6B4D96A22B04897300977A82 /* Week2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D96A12B04897300977A82 /* Week2ViewController.swift */; };
 		6B4D96CD2B074AF000977A82 /* Week2FightingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D96CC2B074AF000977A82 /* Week2FightingViewController.swift */; };
 		6BF2E5572B1325E1003F1835 /* Week3PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E5562B1325E1003F1835 /* Week3PracticeViewController.swift */; };
+		6BF2E55A2B133254003F1835 /* Week3FightingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E5592B133254003F1835 /* Week3FightingViewController.swift */; };
+		6BF2E55C2B133297003F1835 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E55B2B133297003F1835 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		6B4D96A12B04897300977A82 /* Week2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week2ViewController.swift; sourceTree = "<group>"; };
 		6B4D96CC2B074AF000977A82 /* Week2FightingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week2FightingViewController.swift; sourceTree = "<group>"; };
 		6BF2E5562B1325E1003F1835 /* Week3PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3PracticeViewController.swift; sourceTree = "<group>"; };
+		6BF2E5592B133254003F1835 /* Week3FightingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3FightingViewController.swift; sourceTree = "<group>"; };
+		6BF2E55B2B133297003F1835 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				6BF2E5552B1325CC003F1835 /* Practice */,
+				6BF2E5582B13323B003F1835 /* Fighting */,
 			);
 			path = Week3;
 			sourceTree = "<group>";
@@ -154,6 +159,15 @@
 				6BF2E5562B1325E1003F1835 /* Week3PracticeViewController.swift */,
 			);
 			path = Practice;
+			sourceTree = "<group>";
+		};
+		6BF2E5582B13323B003F1835 /* Fighting */ = {
+			isa = PBXGroup;
+			children = (
+				6BF2E5592B133254003F1835 /* Week3FightingViewController.swift */,
+				6BF2E55B2B133297003F1835 /* LoadingView.swift */,
+			);
+			path = Fighting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,7 +249,9 @@
 				6B4D966A2B00AD4400977A82 /* ViewController.swift in Sources */,
 				6B4D96832B00B19700977A82 /* UIButton+.swift in Sources */,
 				6B4D967C2B00AFB600977A82 /* Week1PracticeViewController.swift in Sources */,
+				6BF2E55C2B133297003F1835 /* LoadingView.swift in Sources */,
 				6B4D96CD2B074AF000977A82 /* Week2FightingViewController.swift in Sources */,
+				6BF2E55A2B133254003F1835 /* Week3FightingViewController.swift in Sources */,
 				6BF2E5572B1325E1003F1835 /* Week3PracticeViewController.swift in Sources */,
 				6B4D967E2B00B06600977A82 /* Week1FightingViewController.swift in Sources */,
 				6B4D96662B00AD4400977A82 /* AppDelegate.swift in Sources */,
