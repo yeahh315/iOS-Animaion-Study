@@ -41,7 +41,6 @@ final class FinalViewController: UIViewController {
             $0.width.equalTo(180)
             $0.height.equalTo(300)
         }
-        view.backgroundColor = .red
         view.transform = .init(rotationAngle: 60.0)
         return view
     }()
@@ -169,7 +168,17 @@ private extension FinalViewController {
     func rotation3D(degree: Double) -> CATransform3D {
         var transform = CATransform3DIdentity
         
-        let rotateAngle = CGFloat((degree * Double.pi) / 180.0)
+        let rotateAngle = CGFloat((degree * Double.pi) / 180.0).remainder(dividingBy: Double.pi * 2)
+        
+        // Angle에 따라 카드의 색을 바꿔줌
+        
+        if Double.pi / 2 >= rotateAngle && rotateAngle >= 0 {
+            cardView.backgroundColor = cardList[selectedCardIndex].cardFrontColor
+        } else if -Double.pi / 2 <= rotateAngle && rotateAngle <= 0 {
+            cardView.backgroundColor = cardList[selectedCardIndex].cardFrontColor
+        } else {
+            cardView.backgroundColor = cardList[selectedCardIndex].cardBackColor
+        }
         transform = CATransform3DRotate(transform, rotateAngle, 0, 1, 0)
         
         return transform
