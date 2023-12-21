@@ -88,6 +88,7 @@ final class FinalViewController: UIViewController {
         let button = UIButton()
         button.setTitle("\(cardList[selectedCardIndex].cardName) 좋겠어요", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
         button.backgroundColor = .systemPink
         button.layer.cornerRadius = 15
         return button
@@ -99,6 +100,7 @@ final class FinalViewController: UIViewController {
         setupStyle()
         setupLayout()
         setupTimer()
+        setupButtonBackgroundAnimation()
     }
 }
 
@@ -153,7 +155,7 @@ private extension FinalViewController {
         selectButton.snp.makeConstraints {
             $0.height.equalTo(52)
             $0.horizontalEdges.equalToSuperview().inset(15)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
     }
     
@@ -165,11 +167,21 @@ private extension FinalViewController {
         }
     }
     
+    func setupButtonBackgroundAnimation() {
+        let animation = CABasicAnimation(keyPath: "backgroundColor")
+        animation.duration = 1.5
+        animation.fromValue = cardList[selectedCardIndex].cardFrontColor.cgColor
+        animation.autoreverses = true
+        animation.repeatDuration = .infinity
+        animation.toValue = cardList[selectedCardIndex].cardBackColor.cgColor
+        selectButton.layer.add(animation, forKey: "backgroundAni")
+    }
+    
     func rotation3D(degree: Double) -> CATransform3D {
         var transform = CATransform3DIdentity
         
         let rotateAngle = CGFloat((degree * Double.pi) / 180.0).remainder(dividingBy: Double.pi * 2)
-        
+        print(rotateAngle)
         // Angle에 따라 카드의 색을 바꿔줌
         
         if Double.pi / 2 >= rotateAngle && rotateAngle >= 0 {
@@ -187,5 +199,6 @@ private extension FinalViewController {
     @objc func cardStyleButtonTappd(_ button: UIButton) {
         guard let index = buttonList.firstIndex(of: button) else { return }
         selectedCardIndex = index
+        setupButtonBackgroundAnimation()
     }
 }
