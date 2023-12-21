@@ -11,9 +11,16 @@ import SnapKit
 
 final class FinalViewController: UIViewController {
     
-    private var selectedCard: String = "나이트핑크가" {
+    private let cardList: [CardStyleProtocol] = [LemonBlueCardStyle(),
+                                                 OrangeMilkCardStyle(),
+                                                 NightPinkCardStyle(),
+                                                 PurpleGreenCardStyle()]
+    
+    private var selectedCardIndex: Int = 2 {
         didSet {
-            selectButton.setTitle("\(selectedCard) 좋겠어요", for: .normal)
+            selectButton.setTitle("\(cardList[selectedCardIndex].cardName) 좋겠어요", for: .normal)
+            selectButton.backgroundColor = cardList[selectedCardIndex].cardFrontColor
+            cardView.backgroundColor = cardList[selectedCardIndex].cardFrontColor
         }
     }
     
@@ -47,7 +54,7 @@ final class FinalViewController: UIViewController {
         return stackView
     }()
     
-    private let buttonList: [UIButton] = {
+    private lazy var buttonList: [UIButton] = {
         var buttonList = [UIButton]()
         
         for i in 0...3 {
@@ -56,7 +63,8 @@ final class FinalViewController: UIViewController {
                 $0.height.width.equalTo(30)
             }
             button.layer.cornerRadius = 15
-            button.backgroundColor = .lightGray
+            button.backgroundColor = cardList[i].cardFrontColor
+            button.addTarget(self, action: #selector(cardStyleButtonTappd(_:)), for: .touchUpInside)
             buttonList.append(button)
         }
         return buttonList
@@ -79,16 +87,16 @@ final class FinalViewController: UIViewController {
     
     private lazy var selectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("\(selectedCard) 좋겠어요", for: .normal)
+        button.setTitle("\(cardList[selectedCardIndex].cardName) 좋겠어요", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemPink
         button.layer.cornerRadius = 15
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupStyle()
         setupLayout()
         setupTimer()
@@ -107,7 +115,7 @@ private extension FinalViewController {
         view.addSubview(foreignLabel)
         view.addSubview(foreignSwitch)
         view.addSubview(selectButton)
-
+        
         cardLayerView.addSubview(cardView)
         buttonList.forEach {
             selectedStackView.addArrangedSubview($0)
@@ -152,7 +160,7 @@ private extension FinalViewController {
     
     func setupTimer() {
         var count: Double = 0
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             self.cardLayerView.layer.transform = self.rotation3D(degree: count)
             count += 1
         }
@@ -165,5 +173,10 @@ private extension FinalViewController {
         transform = CATransform3DRotate(transform, rotateAngle, 0, 1, 0)
         
         return transform
+    }
+    
+    @objc func cardStyleButtonTappd(_ button: UIButton) {
+        guard let index = buttonList.firstIndex(of: button) else { return }
+        selectedCardIndex = index
     }
 }
