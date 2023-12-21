@@ -21,6 +21,7 @@ final class FinalViewController: UIViewController {
             selectButton.setTitle("\(cardList[selectedCardIndex].cardName) 좋겠어요", for: .normal)
             selectButton.backgroundColor = cardList[selectedCardIndex].cardFrontColor
             cardView.backgroundColor = cardList[selectedCardIndex].cardFrontColor
+            updateSelected()
         }
     }
     
@@ -62,11 +63,33 @@ final class FinalViewController: UIViewController {
                 $0.height.width.equalTo(30)
             }
             button.layer.cornerRadius = 15
+            button.layer.masksToBounds = true
             button.backgroundColor = cardList[i].cardFrontColor
             button.addTarget(self, action: #selector(cardStyleButtonTappd(_:)), for: .touchUpInside)
             buttonList.append(button)
         }
         return buttonList
+    }()
+    
+    private lazy var buttonHalfList: [UIView] = {
+        var list = [UIView]()
+
+        for i in 0...3 {
+            let view = UIView()
+            view.backgroundColor = cardList[i].cardBackColor
+            list.append(view)
+        }
+        return list
+    }()
+    
+    private let selectedView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemRed
+        view.snp.makeConstraints {
+            $0.width.height.equalTo(6)
+        }
+        view.layer.cornerRadius = 3
+        return view
     }()
     
     private let foreignLabel: UILabel = {
@@ -122,6 +145,14 @@ private extension FinalViewController {
             selectedStackView.addArrangedSubview($0)
         }
         
+        for i in 0...3 {
+            buttonList[i].addSubview(buttonHalfList[i])
+            buttonHalfList[i].snp.makeConstraints {
+                $0.verticalEdges.trailing.equalToSuperview()
+                $0.leading.equalTo(buttonList[i].snp.centerX)
+            }
+        }
+        
         choiceLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(15)
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -136,6 +167,8 @@ private extension FinalViewController {
         cardView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
+        
+        updateSelected()
         
         selectedStackView.snp.makeConstraints {
             $0.top.equalTo(cardView.snp.bottom).offset(60)
@@ -181,7 +214,7 @@ private extension FinalViewController {
         var transform = CATransform3DIdentity
         
         let rotateAngle = CGFloat((degree * Double.pi) / 180.0).remainder(dividingBy: Double.pi * 2)
-        print(rotateAngle)
+
         // Angle에 따라 카드의 색을 바꿔줌
         
         if Double.pi / 2 >= rotateAngle && rotateAngle >= 0 {
@@ -194,6 +227,16 @@ private extension FinalViewController {
         transform = CATransform3DRotate(transform, rotateAngle, 0, 1, 0)
         
         return transform
+    }
+    
+    func updateSelected() {
+        selectedView.removeFromSuperview()
+        
+        view.addSubview(selectedView)
+        selectedView.snp.makeConstraints {
+            $0.centerX.equalTo(buttonList[selectedCardIndex])
+            $0.bottom.equalTo(buttonList[selectedCardIndex].snp.top).offset(-10)
+        }
     }
     
     @objc func cardStyleButtonTappd(_ button: UIButton) {
