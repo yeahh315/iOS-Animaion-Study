@@ -25,6 +25,8 @@ final class FinalViewController: UIViewController {
         return label
     }()
     
+    private let cardLayerView: UIView = UIView()
+    
     private let cardView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
@@ -89,6 +91,7 @@ final class FinalViewController: UIViewController {
 
         setupStyle()
         setupLayout()
+        setupTimer()
     }
 }
 
@@ -99,12 +102,13 @@ private extension FinalViewController {
     
     func setupLayout() {
         view.addSubview(choiceLabel)
-        view.addSubview(cardView)
+        view.addSubview(cardLayerView)
         view.addSubview(selectedStackView)
         view.addSubview(foreignLabel)
         view.addSubview(foreignSwitch)
         view.addSubview(selectButton)
 
+        cardLayerView.addSubview(cardView)
         buttonList.forEach {
             selectedStackView.addArrangedSubview($0)
         }
@@ -114,9 +118,14 @@ private extension FinalViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
         
+        cardLayerView.snp.makeConstraints {
+            $0.height.equalTo(300)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(choiceLabel.snp.bottom).offset(50)
+        }
+        
         cardView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(choiceLabel.snp.bottom).offset(75)
+            $0.center.equalToSuperview()
         }
         
         selectedStackView.snp.makeConstraints {
@@ -139,6 +148,22 @@ private extension FinalViewController {
             $0.horizontalEdges.equalToSuperview().inset(15)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-
+    }
+    
+    func setupTimer() {
+        var count: Double = 0
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+            self.cardLayerView.layer.transform = self.rotation3D(degree: count)
+            count += 1
+        }
+    }
+    
+    func rotation3D(degree: Double) -> CATransform3D {
+        var transform = CATransform3DIdentity
+        
+        let rotateAngle = CGFloat((degree * Double.pi) / 180.0)
+        transform = CATransform3DRotate(transform, rotateAngle, 0, 1, 0)
+        
+        return transform
     }
 }
