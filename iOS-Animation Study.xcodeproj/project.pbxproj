@@ -19,6 +19,7 @@
 		6B4D96A22B04897300977A82 /* Week2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D96A12B04897300977A82 /* Week2ViewController.swift */; };
 		6B4D96CD2B074AF000977A82 /* Week2FightingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D96CC2B074AF000977A82 /* Week2FightingViewController.swift */; };
 		6B95A32C2B2C3C5E009B0F2E /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95A32B2B2C3C5E009B0F2E /* FinalViewController.swift */; };
+		6B95A3312B343362009B0F2E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 6B95A3302B343362009B0F2E /* Then */; };
 		6BF2E5572B1325E1003F1835 /* Week3PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E5562B1325E1003F1835 /* Week3PracticeViewController.swift */; };
 		6BF2E55A2B133254003F1835 /* Week3FightingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E5592B133254003F1835 /* Week3FightingViewController.swift */; };
 		6BF2E55C2B133297003F1835 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2E55B2B133297003F1835 /* LoadingView.swift */; };
@@ -49,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B4D96862B00B22F00977A82 /* SnapKit in Frameworks */,
+				6B95A3312B343362009B0F2E /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +209,7 @@
 			name = "iOS-Animation Study";
 			packageProductDependencies = (
 				6B4D96852B00B22F00977A82 /* SnapKit */,
+				6B95A3302B343362009B0F2E /* Then */,
 			);
 			productName = "iOS-Animation Study";
 			productReference = 6B4D96622B00AD4400977A82 /* iOS-Animation Study.app */;
@@ -238,6 +241,7 @@
 			mainGroup = 6B4D96592B00AD4400977A82;
 			packageReferences = (
 				6B4D96842B00B22F00977A82 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				6B95A32F2B343362009B0F2E /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 6B4D96632B00AD4400977A82 /* Products */;
 			projectDirPath = "";
@@ -499,6 +503,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		6B95A32F2B343362009B0F2E /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B4D96842B00B22F00977A82 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		6B95A3302B343362009B0F2E /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B95A32F2B343362009B0F2E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
